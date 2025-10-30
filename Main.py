@@ -8,14 +8,14 @@ from estadisticas import (pais_maxpoblacion,pais_minpoblacion,promedio,conteo_co
 menu = True
 while menu:
     print("\n(1)-> Buscar País (nombre)")
-    print("(2)-> Filtrar países (continente, rango de población o rango de superficie)")
+    print("(2)-> Filtrar países (por continente, rango de población o rango de superficie)")
     print("(3)-> Estadísticas globales")
-    print("(4)-> Salir")
-    #Pido al usuario que ingrese una opción
+    print("(4)-> Salir del programa")
+    # Pido al usuario que ingrese una opción
     try:
         opcion = int(input("Ingrese una opción: "))
     except ValueError:
-        print("Opción inválida. Ingrese un número.")
+        print("Opción inválida. Ingrese un número válido del menú.")
         continue # Vuelve al bucle
         
     if opcion == 1:
@@ -62,7 +62,7 @@ while menu:
             print("\n--- Resultado del Filtro por Rango de Superficie ---")
             print(resultado)
         else:
-            print("Opción no reconocida. Intetelo nuevamente.")
+            print("Opción inválida. Inténtelo nuevamente.")
             continue # Vuelve al bucle
     elif opcion == 3:
         print("\n--- Estadísticas Globales ---")

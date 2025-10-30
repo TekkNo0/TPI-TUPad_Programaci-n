@@ -9,7 +9,7 @@ def paises_en_continente(paises_en_continente):
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) 
+        next(lector, None)
 
         #Se crea una lista para agregar los paises pertenecientes al continente
         paises = []
@@ -17,11 +17,11 @@ def paises_en_continente(paises_en_continente):
         #Iteración sobre las filas (continentes)
         for fila in lector:
             # La columna del nombre del país es la primera (índice 0)
-            nombre_continente = fila[1] 
+            nombre_continente = fila[1]
 
             # Comprobar si el país coincide (ignorando mayúsculas/minúsculas)
             if nombre_continente.lower() == paises_en_continente.lower():
-                #Se agregan los paises que cumplan con las condiciones a la lista
+                # Se agregan los paises que cumplan con las condiciones a la lista
                 paises.append(fila)
         if paises:
             return paises
@@ -29,15 +29,15 @@ def paises_en_continente(paises_en_continente):
     # Si el bucle termina sin encontrar el continente
     return f"Continente '{paises_en_continente}' no encontrado."
 
-#Función para filtrar los paises por rango de población
+# Función para filtrar los paises por rango de población
 def paises_por_poblacion(rango_poblacion):
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) 
-        #Se crea una lista para agregar los paises pertenecientes al rango de población
+        next(lector, None)
+        # Se crea una lista para agregar los paises pertenecientes al rango de población
         paises = []
-        #Iteración sobre las filas (población)
+        # Iteración sobre las filas (población)
         for fila in lector:
             # La columna de la población es la tercera (índice 2)
             # Intentar convertir valores que puedan contener separadores o decimales
@@ -53,16 +53,16 @@ def paises_por_poblacion(rango_poblacion):
 
         # Si no se encontraron países en el rango
         return f"No se encontraron países con población en el rango {rango_poblacion}."
-    
-#Funcio para filtrar los paises por rango de superficie    
+
+# Función para filtrar los paises por rango de superficie
 def paises_por_superficie(rango_superficie):
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) 
-        #Se crea una lista para agregar los paises pertenecientes al rango de superficie indicado
+        next(lector, None)
+        # Se crea una lista para agregar los paises pertenecientes al rango de superficie indicado
         paises = []
-        #Iteración sobre las filas (superficie)
+        # Iteración sobre las filas (superficie)
         for fila in lector:
             # La columna de la población es la tercera (índice 3)
             # Intentar convertir valores que puedan contener separadores o decimales
@@ -71,7 +71,7 @@ def paises_por_superficie(rango_superficie):
 
             # Comprobar si la población está dentro del rango dado
             if rango_superficie[0] <= poblacion <= rango_superficie[1]:
-                #Se agregan los paises que cumplan con las condiciones a la lista
+                # Se agregan los paises que cumplan con las condiciones a la lista
                 paises.append(fila)
         if paises:
             return paises
