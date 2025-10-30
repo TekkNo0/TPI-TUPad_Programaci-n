@@ -2,6 +2,8 @@ import csv
 from buscar_pais import busqueda_pais
 from filtros_paises import paises_en_continente
 from filtros_paises import paises_por_poblacion
+from filtros_paises import paises_por_superficie
+
 
 menu = True
 while menu:
@@ -49,6 +51,22 @@ while menu:
             print("\n--- Resultado del Filtro por Rango de Población ---")
             print(resultado)
             print("----------------------------------")
+        elif filtro == 3:
+            try:
+                min_poblacion = int(input("Ingrese el valor de la superficie mínima: "))
+                max_poblacion = int(input("Ingrese el valor de la superficie máxima: "))
+            except ValueError:
+                print("Entrada inválida. Ingrese números enteros para la superficie.")
+                continue # Vuelve al bucle
+            rango_superficie = (min_poblacion, max_poblacion)
+            resultado = paises_por_superficie(rango_superficie)
+            print("\n--- Resultado del Filtro por Rango de Superficie ---")
+            print(resultado)
+            print("----------------------------------")
+        else:
+            print("Opción no reconocida. Intetelo nuevamente.")
+            continue # Vuelve al bucle
+
     elif opcion == 3:
         print("Saliendo del programa. ¡Adiós!")
         #Salgo del programa

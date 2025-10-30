@@ -53,3 +53,25 @@ def paises_por_poblacion(rango_poblacion):
 
         # Si no se encontraron países en el rango
         return f"No se encontraron países con población en el rango {rango_poblacion}."
+    
+def paises_por_superficie(rango_superficie):
+    """Filtra los paises por rango de superficie en el archivo CSV."""
+    # Abro el archivo
+    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
+        lector = csv.reader(archivo, delimiter=";")
+        next(lector, None) 
+        #Se crea una lista para agregar los paises pertenecientes al rango de superficie indicado
+        paises = []
+        #Iteración sobre las filas (superficie)
+        for fila in lector:
+            # La columna de la población es la tercera (índice 3)
+            # Intentar convertir valores que puedan contener separadores o decimales
+            quitar_separadores = fila[3].strip()
+            poblacion = int(quitar_separadores.replace(".", "").replace(",", ""))
+
+            # Comprobar si la población está dentro del rango dado
+            if rango_superficie[0] <= poblacion <= rango_superficie[1]:
+                #Se agregan los paises que cumplan con las condiciones a la lista
+                paises.append(fila)
+        if paises:
+            return paises
