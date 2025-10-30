@@ -3,8 +3,8 @@ import csv
 # Defino el nombre de la base de datos
 DATABASE = "DataBase.csv" 
 
+#Función para filtrar los paises por rango de continente
 def paises_en_continente(paises_en_continente):
-    """Filtra los paises por continente en el archivo CSV."""
     
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
@@ -29,8 +29,8 @@ def paises_en_continente(paises_en_continente):
     # Si el bucle termina sin encontrar el continente
     return f"Continente '{paises_en_continente}' no encontrado."
 
+#Función para filtrar los paises por rango de población
 def paises_por_poblacion(rango_poblacion):
-    """Filtra los paises por rango de población en el archivo CSV."""
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.reader(archivo, delimiter=";")
@@ -54,8 +54,8 @@ def paises_por_poblacion(rango_poblacion):
         # Si no se encontraron países en el rango
         return f"No se encontraron países con población en el rango {rango_poblacion}."
     
+#Funcio para filtrar los paises por rango de superficie    
 def paises_por_superficie(rango_superficie):
-    """Filtra los paises por rango de superficie en el archivo CSV."""
     # Abro el archivo
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
         lector = csv.reader(archivo, delimiter=";")

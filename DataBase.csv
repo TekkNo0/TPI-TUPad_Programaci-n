@@ -4,27 +4,27 @@ Albania;Europa;2.832.439;28.748
 Alemania;Europa;83.294.633;357.022
 Andorra;Europa;80.088;468
 Angola;Africa;36.684.202;1.246.700
-Antigua y Barbuda;America del Norte;94.298;442
+Antigua y Barbuda;America;94.298;442
 Arabia Saudita;Asia;36.947.025;2.149.690
 Argelia;Africa;45.606.480;2.381.741
-Argentina;America del Sur;45.773.884;2.780.400
+Argentina;America;45.773.884;2.780.400
 Armenia;Asia;2.777.970;29.743
 Australia;Oceania;26.439.111;7.692.024
 Austria;Europa;8.958.960;83.871
 Azerbaiyan;Asia;10.412.651;86.600
-Bahamas;America del Norte;412.623;13.880
+Bahamas;America;412.623;13.880
 Banglades;Asia;172.954.319;147.570
-Barbados;America del Norte;281.995;430
+Barbados;America;281.995;430
 Barein;Asia;1.485.509;765
 Belgica;Europa;11.686.140;30.528
-Belice;America del Norte;410.825;22.966
+Belice;America;410.825;22.966
 Benin;Africa;13.712.828;112.622
 Bielorrusia;Europa;9.498.238;207.600
 Birmania;Asia;54.577.997;676.578
-Bolivia;America del Sur;12.388.571;1.098.581
+Bolivia;America;12.388.571;1.098.581
 Bosnia y Herzegovina;Europa;3.210.847;51.197
 Botsuana;Africa;2.675.352;581.730
-Brasil;America del Sur;216.422.446;8.515.767
+Brasil;America;216.422.446;8.515.767
 Brunei;Asia;452.524;5.765
 Bulgaria;Europa;6.687.717;110.879
 Burkina Faso;Africa;23.251.485;274.200
@@ -33,32 +33,32 @@ Butan;Asia;787.424;38.394
 Cabo Verde;Africa;598.682;4.033
 Camboya;Asia;16.944.826;181.035
 Camerun;Africa;28.647.293;475.440
-Canada;America del Norte;38.781.291;9.984.670
+Canada;America;38.781.291;9.984.670
 Catar;Asia;2.716.391;11.586
 Chad;Africa;18.278.568;1.284.000
-Chile;America del Sur;19.629.590;756.102
+Chile;America;19.629.590;756.102
 China;Asia;1.425.671.352;9.596.961
 Chipre;Europa;1.260.138;9.251
 Ciudad del Vaticano;Europa;518;0.44
-Colombia;America del Sur;52.085.168;1.138.910
+Colombia;America;52.085.168;1.138.910
 Comoras;Africa;850.886;2.235
 Corea del Norte;Asia;26.160.821;120.538
 Corea del Sur;Asia;51.784.059;100.210
 Costa de Marfil;Africa;28.873.034;322.463
-Costa Rica;America del Norte;5.212.173;51.100
+Costa Rica;America;5.212.173;51.100
 Croacia;Europa;4.008.617;56.594
-Cuba;America del Norte;11.194.449;109.884
+Cuba;America;11.194.449;109.884
 Dinamarca;Europa;5.910.913;43.094
-Dominica;America del Norte;73.040;751
-Ecuador;America del Sur;18.190.484;283.561
+Dominica;America;73.040;751
+Ecuador;America;18.190.484;283.561
 Egipto;Africa;112.716.598;1.001.450
-El Salvador;America del Norte;6.364.943;21.041
+El Salvador;America;6.364.943;21.041
 Emiratos Arabes Unidos;Asia;9.516.871;83.600
 Eritrea;Africa;3.748.901;117.600
 Eslovaquia;Europa;5.795.199;49.035
 Eslovenia;Europa;2.119.675;20.273
 Espana;Europa;47.519.628;505.370
-Estados Unidos;America del Norte;339.996.563;9.833.520
+Estados Unidos;America;339.996.563;9.833.520
 Estonia;Europa;1.322.765;45.228
 Esuatini (Suazilandia);Africa;1.210.822;17.364
 Etiopia;Africa;126.527.060;1.104.300
@@ -70,15 +70,15 @@ Gabon;Africa;2.436.566;267.667
 Gambia;Africa;2.773.168;11.300
 Georgia;Asia;3.728.282;69.700
 Ghana;Africa;34.121.985;238.533
-Granada;America del Norte;125.790;344
+Granada;America;125.790;344
 Grecia;Europa;10.341.277;131.957
-Guatemala;America del Norte;18.092.026;108.889
+Guatemala;America;18.092.026;108.889
 Guinea;Africa;14.190.612;245.857
 Guinea-Bisau;Africa;2.150.936;36.125
 Guinea Ecuatorial;Africa;1.714.671;28.051
-Guyana;America del Sur;813.834;214.969
-Haiti;America del Norte;11.724.763;27.750
-Honduras;America del Norte;10.593.798;112.090
+Guyana;America;813.834;214.969
+Haiti;America;11.724.763;27.750
+Honduras;America;10.593.798;112.090
 Hungria;Europa;10.156.051;93.028
 India;Asia;1.428.627.663;3.287.263
 Indonesia;Asia;277.534.122;1.904.569
@@ -90,7 +90,7 @@ Islas Marshall;Oceania;41.952;181
 Islas Salomon;Oceania;740.424;28.896
 Israel;Asia;9.174.520;20.770
 Italia;Europa;58.853.482;301.340
-Jamaica;America del Norte;2.825.544;10.991
+Jamaica;America;2.825.544;10.991
 Japon;Asia;123.294.513;377.975
 Jordania;Asia;11.337.052;89.342
 Kazajistan;Asia;19.606.633;2.724.900
@@ -116,7 +116,7 @@ Malta;Europa;535.914;316
 Marruecos;Africa;37.840.044;446.550
 Mauricio;Africa;1.300.557;2.040
 Mauritania;Africa;4.862.989;1.030.700
-Mexico;America del Norte;128.455.567;1.964.375
+Mexico;America;128.455.567;1.964.375
 Micronesia;Oceania;115.224;702
 Moldavia;Europa;3.435.931;33.851
 Monaco;Europa;36.297;2.02
@@ -126,7 +126,7 @@ Mozambique;Africa;33.897.354;801.590
 Namibia;Africa;2.604.172;824.292
 Nauru;Oceania;12.780;21
 Nepal;Asia;30.896.590;147.181
-Nicaragua;America del Norte;7.046.310;130.370
+Nicaragua;America;7.046.310;130.370
 Niger;Africa;27.202.843;1.267.000
 Nigeria;Africa;223.804.632;923.768
 Noruega;Europa;5.474.360;323.802
@@ -135,10 +135,10 @@ Oman;Asia;4.644.384;309.500
 Paises Bajos;Europa;17.618.299;41.543
 Pakistan;Asia;240.485.658;796.095
 Palaos;Oceania;18.058;459
-Panama;America del Norte;4.468.087;75.420
+Panama;America;4.468.087;75.420
 Papua Nueva Guinea;Oceania;10.329.931;462.840
-Paraguay;America del Sur;6.861.524;406.752
-Peru;America del Sur;34.352.719;1.285.216
+Paraguay;America;6.861.524;406.752
+Peru;America;34.352.719;1.285.216
 Polonia;Europa;41.026.067;312.685
 Portugal;Europa;10.247.605;92.090
 Reino Unido;Europa;67.736.802;243.610
@@ -146,15 +146,15 @@ Republica Centroafricana;Africa;5.742.315;622.984
 Republica Checa;Europa;10.495.295;78.867
 Republica del Congo;Africa;6.142.180;342.000
 Republica Democratica del Congo;Africa;102.262.808;2.344.858
-Republica Dominicana;America del Norte;11.332.972;48.670
+Republica Dominicana;America;11.332.972;48.670
 Ruanda;Africa;14.094.683;26.338
 Rumania;Europa;19.892.812;238.391
-Rusia;Europa/Asia;144.444.359;17.098.246
+Rusia;Asia;144.444.359;17.098.246
 Samoa;Oceania;225.681;2.831
-San Cristobal y Nieves;America del Norte;47.755;261
+San Cristobal y Nieves;America;47.755;261
 San Marino;Europa;33.642;61
-San Vicente y las Granadinas;America del Norte;103.698;389
-Santa Lucia;America del Norte;180.251;616
+San Vicente y las Granadinas;America;103.698;389
+Santa Lucia;America;180.251;616
 Santo Tome y Principe;Africa;231.856;964
 Senegal;Africa;17.763.163;196.722
 Serbia;Europa;7.149.077;88.361
@@ -169,24 +169,24 @@ Sudan;Africa;48.109.006;1.861.484
 Sudan del Sur;Africa;11.088.796;619.745
 Suecia;Europa;10.612.086;450.295
 Suiza;Europa;8.796.669;41.277
-Surinam;America del Sur;623.236;163.820
+Surinam;America;623.236;163.820
 Tailandia;Asia;71.801.279;513.120
 Tanzania;Africa;67.438.106;947.300
 Tayikistan;Asia;10.143.543;143.100
 Timor Oriental;Asia;1.360.596;14.874
 Togo;Africa;9.053.799;56.785
 Tonga;Oceania;107.773;747
-Trinidad y Tobago;America del Sur;1.534.947;5.128
+Trinidad y Tobago;America;1.534.947;5.128
 Tunez;Africa;12.458.223;163.610
 Turkmenistan;Asia;6.516.100;488.100
-Turquia;Asia/Europa;85.816.199;783.562
+Turquia;Europa;85.816.199;783.562
 Tuvalu;Oceania;11.396;26
 Ucrania;Europa;39.701.739;603.550
 Uganda;Africa;48.582.334;241.038
-Uruguay;America del Sur;3.423.108;176.215
+Uruguay;America;3.423.108;176.215
 Uzbekistan;Asia;35.163.944;447.400
 Vanuatu;Oceania;335.908;12.189
-Venezuela;America del Sur;28.838.499;912.050
+Venezuela;America;28.838.499;912.050
 Vietnam;Asia;98.858.950;331.212
 Yemen;Asia;34.449.825;527.968
 Yibuti;Africa;1.136.455;23.200

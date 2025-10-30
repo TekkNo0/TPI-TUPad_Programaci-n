@@ -1,29 +1,41 @@
 import csv
 
-# Defino el nombre de la base de datos
+#Defino el nombre de la base de datos
 DATABASE = "DataBase.csv" 
 
+#Función que busca y retorna el nombre del pais en el csv
 def busqueda_pais(nombre_a_buscar):
-    """Busca un país por nombre en el archivo CSV."""
     
-    # Abro el archivo
+    #Creo una lista para guardar los resultados que encuentre, sea parcial o no
+    resultados_encontrados = []
+    
+    #Abro archivo y compruebo excepciones.
     with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        # Creo el lector que recibe el objeto archivo
         lector = csv.reader(archivo, delimiter=";")
-        
-        # Salto el encabezado
-        next(lector, None) 
-        
-        # Iterar sobre las filas (países)
-        for fila in lector:
-            # La columna del nombre del país es la primera (índice 0)
-            nombre_pais = fila[0]
+        try:
+            next(lector, None) #Salto el encabezado
+        except StopIteration:
+            pass 
             
-            # Comprobar si el país coincide (ignorando mayúsculas/minúsculas)
-            if nombre_pais.lower() == nombre_a_buscar.lower():
-                # Si lo encuentra, devuelve la fila completa
-                return fila 
+        for fila in lector:
+            nombre_pais = fila[0]
                 
-    # Si el bucle termina sin encontrar el país
-    return f"País '{nombre_a_buscar}' no encontrado."
-
+            # Comprobacion si el nombre_a_buscar está en el nombre pais
+            if nombre_a_buscar.lower() in nombre_pais.lower():
+                # Si esta lo agrega a la lista de resultados
+                resultados_encontrados.append(fila)
+    
+    #Si hay resultados entra en la condicion 
+    if resultados_encontrados:
+        
+        # Convierte cada lista en string
+        lista_string = [str(fila) for fila in resultados_encontrados]
+        
+        # Une las lineas de string
+        string_final = "\n".join(lista_string)
+        
+        return string_final
+        
+    # Si no encuentra nada devuelve mensaje de error
+    else:
+        return f"No se encontraron países que contengan '{nombre_a_buscar}'."

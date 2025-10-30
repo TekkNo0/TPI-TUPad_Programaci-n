@@ -1,15 +1,16 @@
-import csv
-from buscar_pais import busqueda_pais
+import csv #Importo libreria csv
+from buscar_pais import busqueda_pais #Importo las diferentes funciones de cada archivo
 from filtros_paises import paises_en_continente
 from filtros_paises import paises_por_poblacion
 from filtros_paises import paises_por_superficie
-
+from estadisticas import (pais_maxpoblacion,pais_minpoblacion,promedio,conteo_continentes)
 
 menu = True
 while menu:
     print("\n(1)-> Buscar País (nombre)")
     print("(2)-> Filtrar países (continente, rango de población o rango de superficie)")
-    print("(3)-> Salir")
+    print("(3)-> Estadísticas globales")
+    print("(4)-> Salir")
     #Pido al usuario que ingrese una opción
     try:
         opcion = int(input("Ingrese una opción: "))
@@ -38,7 +39,6 @@ while menu:
             resultado = paises_en_continente(continente)
             print("\n--- Resultado del Filtro por Continente ---")
             print(resultado)
-            print("----------------------------------")
         elif filtro == 2:
             try:
                 min_poblacion = int(input("Ingrese la población mínima: "))
@@ -50,7 +50,6 @@ while menu:
             resultado = paises_por_poblacion(rango_poblacion)
             print("\n--- Resultado del Filtro por Rango de Población ---")
             print(resultado)
-            print("----------------------------------")
         elif filtro == 3:
             try:
                 min_poblacion = int(input("Ingrese el valor de la superficie mínima: "))
@@ -62,12 +61,16 @@ while menu:
             resultado = paises_por_superficie(rango_superficie)
             print("\n--- Resultado del Filtro por Rango de Superficie ---")
             print(resultado)
-            print("----------------------------------")
         else:
             print("Opción no reconocida. Intetelo nuevamente.")
             continue # Vuelve al bucle
-
     elif opcion == 3:
+        print("\n--- Estadísticas Globales ---")
+        print(pais_maxpoblacion())
+        print(pais_minpoblacion())
+        print(promedio())
+        print(conteo_continentes())
+    elif opcion == 4:
         print("Saliendo del programa. ¡Adiós!")
         #Salgo del programa
         break
