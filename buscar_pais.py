@@ -10,20 +10,35 @@ def busqueda_pais(nombre_a_buscar):
     resultados_encontrados = []
     
     #Abro archivo y compruebo excepciones.
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        try:
-            next(lector, None) #Salto el encabezado
-        except StopIteration:
-            pass 
-            
-        for fila in lector:
-            nombre_pais = fila[0]
+    try:
+        with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
+            lector = csv.reader(archivo, delimiter=";")
+            try:
+                next(lector, None) #Salto el encabezado
+            except StopIteration:
+                pass 
                 
-            # Comprobacion si el nombre_a_buscar está en el nombre pais
-            if nombre_a_buscar.lower() in nombre_pais.lower():
-                # Si esta lo agrega a la lista de resultados
-                resultados_encontrados.append(fila)
+            for fila in lector:
+                if not fila:
+                    continue
+
+                try:
+                    nombre_pais = fila[0]
+                    
+                    # Comprobacion si el nombre_a_buscar está en el nombre pais
+                    if nombre_a_buscar.lower() in nombre_pais.lower():
+                        # Si esta lo agrega a la lista de resultados
+                        resultados_encontrados.append(fila)
+                
+                except IndexError:
+                    continue # Omite la fila malformada
+
+    except FileNotFoundError:
+        return f"ERROR: No se pudo encontrar el archivo '{DATABASE}'."
+    except PermissionError:
+        return f"ERROR: No hay permisos para leer el archivo '{DATABASE}'."
+    except Exception as e:
+        return f"ERROR inesperado al procesar el archivo: {e}"
     
     #Si hay resultados entra en la condicion 
     if resultados_encontrados:

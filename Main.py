@@ -16,12 +16,11 @@ while menu:
         opcion = int(input("Ingrese una opción: "))
     except ValueError:
         print("Opción inválida. Ingrese un número.")
-        continue # Vuelve al bucle
-        
+        continue # Vuelve al bucle     
     if opcion == 1:
         # Pido el nombre del país al usuario
         nombre_pais = input("Ingrese el nombre del país a buscar: ")
-        
+
         # LLamo a la función, y doy el nombre como argumento
         resultado = busqueda_pais(nombre_pais)
         print("\n--- Resultado de la Búsqueda ---")
@@ -71,9 +70,7 @@ while menu:
         print(promedio())
         print(conteo_continentes())
     elif opcion == 4:
-        print("Saliendo del programa. ¡Adiós!")
-        #Salgo del programa
-        break
-        
+        print("Saliendo del programa. ¡Adiós!") #Salgo del programa
+        break 
     else:
         print("Opción no reconocida. Intente de nuevo.")
