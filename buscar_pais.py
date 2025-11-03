@@ -1,12 +1,12 @@
 import csv
 
-#Defino el nombre de la base de datos
+# Defino el nombre de la base de datos.
 DATABASE = "DataBase.csv" 
 
-#Función que busca y retorna el nombre del pais en el csv
+# Función que busca y retorna el nombre del pais en el csv.
 def busqueda_pais(nombre_a_buscar):
     
-    #Creo una lista para guardar los resultados que encuentre, sea parcial o no
+    # Creo una lista para guardar los resultados que encuentre, sea parcial o no.
     resultados_encontrados = []
     
     #Abro archivo y compruebo excepciones.
@@ -40,17 +40,17 @@ def busqueda_pais(nombre_a_buscar):
     except Exception as e:
         return f"ERROR inesperado al procesar el archivo: {e}"
     
-    #Si hay resultados entra en la condicion 
+    # Si hay resultados entra en la condicion.
     if resultados_encontrados:
         
-        # Convierte cada lista en string
+        # Convierte cada lista en string.
         lista_string = [str(fila) for fila in resultados_encontrados]
-        
-        # Une las lineas de string
+
+        # Une las lineas de string.
         string_final = "\n".join(lista_string)
         
         return string_final
-        
-    # Si no encuentra nada devuelve mensaje de error
+
+    # Si no encuentra nada devuelve mensaje de error.
     else:
         return f"No se encontraron países que contengan '{nombre_a_buscar}'."
