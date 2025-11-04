@@ -4,12 +4,14 @@ from filtros_paises import paises_en_continente
 from filtros_paises import paises_por_poblacion
 from filtros_paises import paises_por_superficie
 from estadisticas import (pais_maxpoblacion,pais_minpoblacion,promedio,conteo_continentes)
+from ordenar_paises import (ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie)
 
 menu = True
 while menu:
     print("\n(1)-> Buscar País (nombre)")
     print("(2)-> Filtrar países (por continente, rango de población o rango de superficie)")
-    print("(3)-> Estadísticas globales")
+    print("(3)-> Ordenar países")
+    print("(4)-> Estadísticas globales")
     print("(4)-> Salir del programa")
     # Pido al usuario que ingrese una opción
     try:
@@ -64,12 +66,62 @@ while menu:
             print("Opción inválida. Inténtelo nuevamente.")
             continue # Vuelve al bucle
     elif opcion == 3:
+        print("\n--- Opciones de Ordenamiento ---")
+        print("(1) Por Nombre (A-Z)")
+        print("(2) Por Población")
+        print("(3) Por Superficie")
+        
+        # Pido al usuario el criterio
+        try:
+            opcion_orden = int(input("Seleccione el criterio de ordenamiento: "))
+        except ValueError:
+            print("Opción inválida. Ingrese un número.")
+            continue # Vuelve al bucle principal
+
+        # Por defecto, el orden es Ascendente (False)
+        descendente = False
+        
+        # Pregunto por la dirección solo si es población o superficie
+        if opcion_orden == 2 or opcion_orden == 3:
+            try:
+                direccion = int(input("Ingrese '1' para Ascendente o '2' para Descendente: "))
+                if direccion == 2:
+                    descendente = True # True significa descendente
+                elif direccion != 1:
+                    print("Dirección inválida. Se usará Ascendente por defecto.")
+            except ValueError:
+                print("Entrada inválida. Se usará Ascendente por defecto.")
+
+        # Llamo a la función correspondiente
+        if opcion_orden == 1:
+            # Por nombre, solo llamamos ascendente (descendente=False)
+            resultado = ordenar_por_nombre(False) 
+            print("\n--- Países Ordenados por Nombre (A-Z) ---")
+            print(resultado)
+        
+        elif opcion_orden == 2:
+            # Por población, paso la variable 'descendente' (True o False)
+            resultado = ordenar_por_poblacion(descendente)
+            tipo_orden = "Descendente" if descendente else "Ascendente"
+            print(f"\n--- Países Ordenados por Población ({tipo_orden}) ---")
+            print(resultado)
+            
+        elif opcion_orden == 3:
+            # Por superficie, paso la variable 'descendente' (True o False)
+            resultado = ordenar_por_superficie(descendente)
+            tipo_orden = "Descendente" if descendente else "Ascendente"
+            print(f"\n--- Países Ordenados por Superficie ({tipo_orden}) ---")
+            print(resultado)
+            
+        else:
+            print("Criterio de ordenamiento no reconocido.")
+    elif opcion == 4:
         print("\n--- Estadísticas Globales ---")
         print(pais_maxpoblacion())
         print(pais_minpoblacion())
         print(promedio())
         print(conteo_continentes())
-    elif opcion == 4:
+    elif opcion == 5:
         print("Saliendo del programa. ¡Adiós!") #Salgo del programa
         break 
     else:
