@@ -1,10 +1,11 @@
 import csv #Importo libreria csv
-from buscar_pais import busqueda_pais #Importo las diferentes funciones de cada archivo
-from filtros_paises import paises_en_continente
-from filtros_paises import paises_por_poblacion
-from filtros_paises import paises_por_superficie
+from buscar_pais import busqueda_pais #Importa las diferentes funciones de cada archivo
+from filtros_paises import paises_en_continente #Importa el filtro de paises por continente
+from filtros_paises import paises_por_poblacion #Impota el filtro por población
+from filtros_paises import paises_por_superficie #Importa el filtro por superficie
 from estadisticas import (pais_maxpoblacion,pais_minpoblacion,promedio,conteo_continentes)
 from ordenar_paises import (ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie)
+from api_actualizar import actualizar_csv_desde_api #Importa la API
 
 menu = True
 while menu:
@@ -126,3 +127,5 @@ while menu:
         break 
     else:
         print("Opción no reconocida. Intente de nuevo.")
+
+actualizar_csv_desde_api()
