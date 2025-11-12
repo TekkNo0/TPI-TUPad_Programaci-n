@@ -78,6 +78,9 @@ def paises_por_superficie(rango_superficie, datos_paises):
         if minimo <= fila['Superficie'] <= maximo:
             paises.append(fila)
 
-    if paises:
-        return paises
-    return f"No se encontraron países con superficie entre {minimo} y {maximo}."
+            # Comprobar si la población está dentro del rango dado
+            if rango_superficie[0] <= poblacion <= rango_superficie[1]:
+                # Se agregan los paises que cumplan con las condiciones a la lista
+                paises.append(fila)
+        if paises:
+            return paises
