@@ -109,7 +109,7 @@ while menu:
         print("Datos actualizados y recargados.")
 
     elif opcion == 6:
-        print("Saliendo del programa. ¡Adiós!")
+        print("Saliendo del programa.")
         menu = False
 
     else:

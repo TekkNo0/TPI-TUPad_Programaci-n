@@ -2,10 +2,6 @@
 # Se elimina la función _cargar_y_preparar_datos()
 
 def _formatear_y_devolver(lista_paises):
-    """
-    Función auxiliar para convertir la lista de diccionarios ordenados
-    en un string legible.
-    """
     if not lista_paises:
         return "No hay países para mostrar."
     
