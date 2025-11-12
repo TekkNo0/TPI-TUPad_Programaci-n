@@ -1,77 +1,58 @@
-import csv
+# No se necesita csv ni DATABASE
+# Se elimina la función _limpiar_numero()
 
-DATABASE = "DataBase.csv"
-
-#Función para limpiar los . de los numeros y los datos hacerlos int
-def _limpiar_numero(numero_str):
-    return int(numero_str.replace(".", ""))
-
-#Función para encontrar el pais con la maxima población
-def pais_maxpoblacion():
-    maxpob_valor = -1 #Variables para guardar y comparar los resultados de los paises.
-    pais_max = None
-
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) # Saltar encabezado
-            
-        for fila in lector:
-            poblacion = _limpiar_numero(fila[2]) #Llama a la función y limpia los . de la poblacion 
-            if poblacion > maxpob_valor: #Compara el numero y si es mayor entra a la condición y actualiza los valores de las variables
-                maxpob_valor = poblacion 
-                pais_max = fila
-    return f"País con Mayor Población: {str(pais_max)}"
-
-#Encuentra el país con la menor población
-def pais_minpoblacion():
-    minpob_valor = float('inf') #Se asigna valor infinito para comparar
-    pais_min = None
+# Acepta la lista 'datos_paises'
+def pais_maxpoblacion(datos_paises):
+    if not datos_paises:
+        return "No hay datos para calcular."
     
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) # Saltar encabezado
-            
-        for fila in lector:
-            poblacion = _limpiar_numero(fila[2])
-            if poblacion < minpob_valor: #Compara el numero y si es menor entra a la condición y actualiza los valores de las variables
-                minnpob_valor = poblacion
-                pais_min = fila
-        return f"País con Menor Población: {str(pais_min)}"
-
-#Funcion para definir el promedio de población y superficie
-def promedio():
-    total_poblacion = 0 #Variables para calcular
-    total_superficie = 0
-    total_paises = 0
+    # Usa max() con una lambda, accediendo a la clave 'Poblacion'
+    # Los datos ya son números
+    pais_max = max(datos_paises, key=lambda p: p['Poblacion'])
     
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) 
-            
-        for fila in lector: #Bucle que recorre la base de datos y va sumando la población y superficie 
-            total_poblacion += _limpiar_numero(fila[2])
-            total_superficie += _limpiar_numero(fila[3])
-            total_paises += 1 #Contador para el calculo de promedio
-            continue
-    promedio_pob = total_poblacion / total_paises #Calculo del promedio
+    return f"País con Mayor Población: {pais_max['Nombre']} ({pais_max['Poblacion']:,.0f})"
+
+# Acepta la lista 'datos_paises'
+def pais_minpoblacion(datos_paises):
+    if not datos_paises:
+        return "No hay datos para calcular."
+        
+    # Usa min() con una lambda
+    pais_min = min(datos_paises, key=lambda p: p['Poblacion'])
+    
+    return f"País con Menor Población: {pais_min['Nombre']} ({pais_min['Poblacion']:,.0f})"
+
+# Acepta la lista 'datos_paises'
+def promedio(datos_paises):
+    if not datos_paises:
+        return "No hay datos para calcular."
+        
+    total_paises = len(datos_paises)
+    
+    # Usa sum() con un generador para sumar los valores de la clave
+    total_poblacion = sum(p['Poblacion'] for p in datos_paises)
+    total_superficie = sum(p['Superficie'] for p in datos_paises)
+    
+    promedio_pob = total_poblacion / total_paises
     promedio_sup = total_superficie / total_paises
         
     return (f"Promedio de Población: {promedio_pob:,.0f} hab.\n"
             f"Promedio de Superficie: {promedio_sup:,.2f} km²")
 
-#Función para contar cuantos paises hay en cada continente
-def conteo_continentes():
+# Acepta la lista 'datos_paises'
+def conteo_continentes(datos_paises):
+    if not datos_paises:
+        return "No hay datos para calcular."
+
     conteo = {}
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None) # Saltar encabezado
+    # Itera sobre la lista de diccionarios
+    for fila in datos_paises:
+        # Accede por clave 'Continente'
+        continente = fila['Continente']
+        conteo[continente] = conteo.get(continente, 0) + 1
             
-        for fila in lector:
-            continente = fila[1]
-            conteo[continente] = conteo.get(continente, 0) + 1
-                    
-    string_salida = "Países por Continente:"
+    # Formatea el resultado
+    resultado = "Conteo por Continente:\n"
     for continente, cantidad in conteo.items():
-        string_salida += f"\n   - {continente}: {cantidad} países"
-        
-    return string_salida
+        resultado += f"  - {continente}: {cantidad} países\n"
+    return resultado.strip()

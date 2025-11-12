@@ -1,120 +1,82 @@
-import csv
-import os
+# No se necesita csv, os, nin DATABASE
 
-DATABASE = "DataBase.csv"
-
-
-#Funciones de validación
-
-def validar_archivo():
-    #Verifica si el archivo CSV existe y no está vacío.
-    if not os.path.exists(DATABASE):
-        raise FileNotFoundError(f"El archivo '{DATABASE}' no existe.")
-    if os.path.getsize(DATABASE) == 0:
-        raise ValueError(f"El archivo '{DATABASE}' está vacío.")
-
+# --- Funciones de validación (se mantienen si aún son necesarias) ---
+# Se elimina validar_archivo()
+# Se elimina convertir_a_entero()
 
 def validar_continente(nombre: str) -> str:
-    #Valida que el nombre del continente sea una cadena no vacía.
+    # (Esta función se mantiene sin cambios si la necesitas)
     if not nombre or not nombre.strip():
         raise ValueError("El nombre del continente no puede estar vacío.")
     if any(char.isdigit() for char in nombre):
         raise ValueError("El nombre del continente no puede contener números.")
     return nombre.strip()
 
-
 def validar_rango_numerico(rango) -> tuple:
-    #Valida que el rango sea una tupla/lista de dos números válidos y positivos.
+    # (Esta función se mantiene sin cambios)
     if not isinstance(rango, (list, tuple)) or len(rango) != 2:
         raise TypeError("El rango debe ser una tupla o lista con dos valores (mínimo y máximo).")
     try:
         minimo, maximo = map(int, rango)
     except ValueError:
         raise ValueError("El rango debe contener solo números enteros.")
-
     if minimo < 0 or maximo < 0:
         raise ValueError("Los valores del rango deben ser positivos.")
     if minimo > maximo:
-        raise ValueError("El rango mínimo no puede ser mayor que el máximo.")
+        return maximo, minimo # Corrige el rango si está invertido
     return minimo, maximo
 
+# --- Funciones de filtrado (modificadas) ---
 
-def convertir_a_entero(valor: str) -> int:
-    #Convierte una cadena con separadores o decimales a un número entero seguro.
+# Acepta la lista 'datos_paises'
+def paises_en_continente(nombre_continente, datos_paises):
     try:
-        limpio = valor.strip().replace(".", "").replace(",", "")
-        return int(limpio)
-    except (ValueError, AttributeError):
-        raise ValueError(f"Valor numérico inválido: '{valor}'.")
-
-
-#Funciones de filtro para el codigo principal
-
-def paises_en_continente(nombre_continente: str):
-    #Devuelve una lista de países pertenecientes a un continente.
-    validar_archivo()
-    nombre_continente = validar_continente(nombre_continente)
+        nombre_validado = validar_continente(nombre_continente)
+    except ValueError as e:
+        return f"Error: {e}"
 
     paises = []
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None)  # omitir encabezado
-
-        for fila in lector:
-            if len(fila) < 2:
-                continue  # salta filas incompletas
-            if fila[1].strip().lower() == nombre_continente.lower():
-                paises.append(fila)
+    # Itera sobre la lista de diccionarios
+    for fila in datos_paises:
+        # Compara usando la clave 'Continente'
+        if fila['Continente'].lower() == nombre_validado.lower():
+            paises.append(fila) # Guarda el diccionario completo
 
     if paises:
-        return paises
-    return f"No se encontraron países en el continente '{nombre_continente}'."
+        return paises # Devuelve una lista de diccionarios
+    return f"No se encontraron países en el continente '{nombre_validado}'."
 
-
-def paises_por_poblacion(rango_poblacion):
-    #Filtra países por rango de población.
-    validar_archivo()
-    minimo, maximo = validar_rango_numerico(rango_poblacion)
+# Acepta la lista 'datos_paises'
+def paises_por_poblacion(rango_poblacion, datos_paises):
+    try:
+        minimo, maximo = validar_rango_numerico(rango_poblacion)
+    except (ValueError, TypeError) as e:
+        return f"Error: {e}"
 
     paises = []
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None)
-
-        for fila in lector:
-            if len(fila) < 3:
-                continue
-            try:
-                poblacion = convertir_a_entero(fila[2])
-            except ValueError:
-                continue
-            if minimo <= poblacion <= maximo:
-                paises.append(fila)
+    # Itera sobre la lista de diccionarios
+    for fila in datos_paises:
+        # Los datos en fila['Poblacion'] YA SON enteros
+        if minimo <= fila['Poblacion'] <= maximo:
+            paises.append(fila)
 
     if paises:
         return paises
     return f"No se encontraron países con población entre {minimo} y {maximo}."
 
-
-def paises_por_superficie(rango_superficie):
-    #Filtra países por rango de superficie.
-    validar_archivo()
-    minimo, maximo = validar_rango_numerico(rango_superficie)
+# Acepta la lista 'datos_paises'
+def paises_por_superficie(rango_superficie, datos_paises):
+    try:
+        minimo, maximo = validar_rango_numerico(rango_superficie)
+    except (ValueError, TypeError) as e:
+        return f"Error: {e}"
 
     paises = []
-    with open(DATABASE, "r", newline="", encoding="utf-8") as archivo:
-        lector = csv.reader(archivo, delimiter=";")
-        next(lector, None)
-
-        for fila in lector:
-            if len(fila) < 4:
-                continue
-            try:
-                superficie = convertir_a_entero(fila[3])
-            except ValueError:
-                continue
-            if minimo <= superficie <= maximo:
-                paises.append(fila)
+    # Itera sobre la lista de diccionarios
+    for fila in datos_paises:
+        # Los datos en fila['Superficie'] YA SON floats/int
+        if minimo <= fila['Superficie'] <= maximo:
+            paises.append(fila)
 
     if paises:
         return paises
