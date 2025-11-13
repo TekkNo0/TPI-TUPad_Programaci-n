@@ -1,4 +1,4 @@
-# No se necesita importar csv ni DATABASE
+
 
 # La función ahora acepta 'datos_paises' como argumento
 def busqueda_pais(nombre_a_buscar, datos_paises):

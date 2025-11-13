@@ -51,7 +51,8 @@ while menu:
         print(resultado)
 
     elif opcion == 2:
-        # ... (lógica de submenú de filtros sin cambios) ...
+        # --- BLOQUE CORREGIDO ---
+        print("\n--- Filtrar Países ---")
         sub_opcion = input("Filtrar por (C)ontinente, (P)oblación, (S)uperficie: ").upper()
         
         if sub_opcion == 'C':
@@ -70,7 +71,16 @@ while menu:
             except ValueError:
                 print("Error: Ingrese solo números para la población.")
 
-        # ... (Añadir lógica similar para Superficie si existe en tu Main original) ...
+        elif sub_opcion == 'S': # --- ESTA PARTE FALTABA ---
+            try:
+                min_sup = int(input("Superficie mínima (km²): "))
+                max_sup = int(input("Superficie máxima (km²): "))
+                # Pasa la lista de países
+                resultado = paises_por_superficie((min_sup, max_sup), lista_paises)
+                print(resultado)
+            except ValueError:
+                print("Error: Ingrese solo números para la superficie.")
+        
         else:
             print("Opción de filtro no válida.")
 
