@@ -80,15 +80,18 @@ while menu:
                 print(resultado)
             except ValueError:
                 print("Error: Ingrese solo números para la superficie.")
-        
         else:
             print("Opción de filtro no válida.")
 
     elif opcion == 3:
         # ... (lógica de submenú de orden sin cambios) ...
-        criterio = int(input("Ordenar por (1) Nombre, (2) Población, (3) Superficie: "))
-        orden = input("Orden (A)scendente o (D)escendente: ").upper()
-        descendente = (orden == 'D')
+        try:
+            criterio = int(input("Ordenar por (1) Nombre, (2) Población, (3) Superficie: "))
+            orden = input("Orden (A)scendente o (D)escendente: ").upper()
+            descendente = (orden == 'D')
+        except ValueError:
+            print("Error: Ingrese un número válido para el criterio.")
+            continue
         
         if criterio == 1:
             # Pasa la lista de países
